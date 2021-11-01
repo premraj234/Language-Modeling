@@ -4,6 +4,7 @@ Name:
 Roll No:
 """
 
+from os import read
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -17,7 +18,13 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    x = []
+    y = open(filename)
+    b = y.read().splitlines()
+    for i in b:
+        if len(i) > 0:
+            x. append(i.split(' '))
+    return x
 
 
 '''
@@ -27,10 +34,11 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    
+   
 
 
-'''
+    '''
 buildVocabulary(corpus)
 #3 [Check6-1]
 Parameters: 2D list of strs
@@ -285,13 +293,14 @@ def scatterPlot(xs, ys, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek1()
+    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    # test.week1Tests()
+    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+    # test.runWeek1()
+    test.testLoadBook()
 
     ## Uncomment these for Week 2 ##
-"""
+    """
     print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
