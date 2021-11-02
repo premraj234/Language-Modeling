@@ -22,9 +22,8 @@ def loadBook(filename):
     b = y.read().splitlines()
     for i in b:
         if len(i) > 0:
-            x. append(i.split(' '))
+           x. append(i.split( ))
     return x
-    
 
 
 '''
@@ -115,7 +114,16 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def countBigrams(corpus):
-    return
+    c = { }
+    for i in corpus:
+        for j in range(len(i)-1):
+            if i[j] not in c:
+                c[i[j]] = { }
+                c[i[j]][i[j+1]] = 1
+            else:
+                c[i[j]][i[j+1]] = 1
+   
+    return c
 
 
 ### WEEK 2 ###
@@ -127,9 +135,12 @@ Parameters: list of strs
 Returns: list of floats
 '''
 def buildUniformProbs(unigrams):
-    return
+    x = [ ]
+    for i in unigrams:
+        x.append(1/len(unigrams))
+    return x
 
-
+    
 '''
 buildUnigramProbs(unigrams, unigramCounts, totalCount)
 #2 [Check6-2]
@@ -137,10 +148,12 @@ Parameters: list of strs ; dict mapping strs to ints ; int
 Returns: list of floats
 '''
 def buildUnigramProbs(unigrams, unigramCounts, totalCount):
-    return
+    
+    
+    return 
 
 
-'''
+    '''
 buildBigramProbs(unigramCounts, bigramCounts)
 #3 [Check6-2]
 Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs to ints)
@@ -327,7 +340,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testCountStartWords()
+    test.testBuildUniformProbs()
 
 
     ## Uncomment these for Week 2 ##
