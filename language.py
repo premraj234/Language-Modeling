@@ -119,9 +119,13 @@ def countBigrams(corpus):
         for j in range(len(i)-1):
             if i[j] not in c:
                 c[i[j]] = { }
+           
+            if i[j+1] not in c[i[j]]:
                 c[i[j]][i[j+1]] = 1
             else:
-                c[i[j]][i[j+1]] = 1
+                c[i[j]][i[j+1]] += 1
+    
+    
    
     return c
 
@@ -346,7 +350,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testBuildUnigramProbs()
+    test.testCountBigrams()
 
 
     ## Uncomment these for Week 2 ##
