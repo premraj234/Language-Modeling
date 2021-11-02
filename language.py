@@ -170,7 +170,8 @@ Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs
 Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 '''
 def buildBigramProbs(unigramCounts, bigramCounts):
-    return
+    
+    return 
 
 
 '''
@@ -202,10 +203,10 @@ generateTextFromUnigrams(count, words, probs)
 Parameters: int ; list of strs ; list of floats
 Returns: str
 '''
+import random
 from random import choices
 def generateTextFromUnigrams(count, words, probs):
     x = ""
-    import random
     for i in range(count):
         list_ = random.choices(words, weights=probs)
         x =  x + list_[0] + " "
@@ -219,7 +220,22 @@ Parameters: int ; list of strs ; list of floats ; dict mapping strs to (dicts ma
 Returns: str
 '''
 def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs):
-    return
+    a = ""
+    z = random.choices(startWords,weights=startWordProbs)[0]
+    a = z
+    for i in range(count-1):
+        if(z!="."):
+            x = bigramProbs[z]["words"]
+            y = bigramProbs[z]["probs"]
+            z = random.choices(x,weights=y)[0]
+            a+=" "+z
+        else:
+            z = random.choices(startWords,weights=startWordProbs)[0]
+            a +=" "+z
+    return a
+
+
+   
 
 
 ### WEEK 3 ###
@@ -368,8 +384,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testGenerateTextFromUnigrams()
-
+    test.testGenerateTextFromBigrams()
 
     ## Uncomment these for Week 2 ##
     """
