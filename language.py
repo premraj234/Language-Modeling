@@ -4,7 +4,7 @@ Name:
 Roll No:
 """
 
-from matplotlib.pyplot import xcorr
+from matplotlib.pyplot import title, xcorr
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -265,12 +265,15 @@ Parameters: 2D list of strs
 Returns: None
 '''
 def graphTop50Words(corpus):
+    uniqueWords = buildVocabulary(corpus)
+    unigramCounts = countUnigrams(corpus)
+    count = getCorpusLength(corpus)
+    unigramProbs = buildUnigramProbs(uniqueWords, unigramCounts,totalCount=count)
+    top = getTopWords(50,uniqueWords,unigramProbs,ignore)
+    x = barPlot(top, "Top N words")
     
-
-
-
+    return x
     
-    return
 
 
 '''
@@ -280,7 +283,8 @@ Parameters: 2D list of strs
 Returns: None
 '''
 def graphTopStartWords(corpus):
-    return
+    
+    return 
 
 
 '''
@@ -402,7 +406,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testBuildBigramProbs()
+    # test.testBuildBigramProbs()
 
     ## Uncomment these for Week 2 ##
     """
@@ -413,5 +417,5 @@ if __name__ == "__main__":
 
     ## Uncomment these for Week 3 ##
 
-    # print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    # test.runWeek3()
+    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    test.runWeek3()
