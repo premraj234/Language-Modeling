@@ -4,6 +4,7 @@ Name:
 Roll No:
 """
 
+from matplotlib.pyplot import xcorr
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -170,8 +171,20 @@ Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs
 Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 '''
 def buildBigramProbs(unigramCounts, bigramCounts):
+    x = {}
+    for prevWord in bigramCounts:
+        word = []
+        prob = []
+        for key,value in bigramCounts[prevWord].items():
+            word.append(key)
+            prob.append(value / unigramCounts[prevWord]) 
+        temp = {}
+        temp["words"] =word
+        temp["probs"] = prob
+        x[prevWord] = temp
+   
     
-    return 
+    return x
 
 
 '''
@@ -252,6 +265,10 @@ Parameters: 2D list of strs
 Returns: None
 '''
 def graphTop50Words(corpus):
+    
+
+
+
     
     return
 
@@ -385,7 +402,7 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    # test.testGenerateTextFromBigrams()
+    test.testBuildBigramProbs()
 
     ## Uncomment these for Week 2 ##
     """
